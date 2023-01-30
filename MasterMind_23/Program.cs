@@ -10,8 +10,11 @@ namespace MasterMind_23
     {
         static void Main(string[] args)
         {
+            string input = Console.ReadLine();
+            Console.WriteLine(input);
+
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Testing the colors");
+            Console.WriteLine('\u2103' + "⬤ Testing the colors");
         }
     }
 }
