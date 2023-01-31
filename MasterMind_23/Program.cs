@@ -13,7 +13,7 @@ namespace MasterMind_23
         {
             Game game = new Game();
             game.CreateCode();
-
+            //which input are allowed
             string input = Console.ReadLine();
             while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
             {
@@ -23,9 +23,13 @@ namespace MasterMind_23
 
             game.MakeGuess(input);
 
-            foreach(Pin pin in game.Code)
+            foreach(var guess in game.Guesses)
             {
-                WritePin(pin.Color);
+                foreach(Pin pin in guess.Value)
+                {
+                    WritePin(pin.Color);
+                }
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
@@ -121,6 +125,7 @@ public class Game
                     guessCode.Add(new Pin(guessCode.Count, Color.Orange));
                     break;
             }
+            Guesses.Add(guess.Count, guessCode);
         }
     }
 }
