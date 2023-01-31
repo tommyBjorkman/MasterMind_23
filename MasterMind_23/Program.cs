@@ -10,8 +10,8 @@ namespace MasterMind_23
     {
         static void Main(string[] args)
         {
-            Pin purple = new Pin(1, Color.Purple);
-            Console.WriteLine(purple.Color);
+            Game game = new Game();
+            game.CreateCode();
         }
     }
 }
@@ -29,7 +29,8 @@ public class Game
 
         for(int i = 0; i < 4; i++)
         {
-            random.Next(1, 8);
+            Color randomColor = (Color)random.Next(1, 8);
+            Code.Add(new Pin(i, randomColor));
         }
     }
 }
