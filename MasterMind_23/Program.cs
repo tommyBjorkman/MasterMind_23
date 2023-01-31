@@ -32,8 +32,8 @@ namespace MasterMind_23
                 case Color.Yellow:
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
-                case Color.Black:
-                    Console.ForegroundColor = ConsoleColor.Black;
+                case Color.Cyan:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     break;
                 case Color.Magenta:
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -48,7 +48,9 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-            Console.Write("⬤ ");
+            
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.Write("\x25A0 ");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
@@ -88,7 +90,7 @@ public class Pin
 public enum Color
 {
     White = 1,
-    Black = 2,
+    Cyan = 2,
     Blue = 3,
     Yellow = 4,
     Green = 5,
