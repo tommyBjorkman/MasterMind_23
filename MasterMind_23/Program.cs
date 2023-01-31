@@ -69,10 +69,12 @@ namespace MasterMind_23
 public class Game
 {
     public List<Pin> Code { get; set; }
+    public Dictionary<int, List<Pin>> Guesses { get; set; }
 
     public Game() 
     { 
         Code = new List<Pin>();
+        Guesses = new Dictionary<int, List<Pin>>();
     }
     // Random color generator. Get the 4 colors to guess on. 
     public void CreateCode()
