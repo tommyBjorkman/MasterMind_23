@@ -23,6 +23,15 @@ public class Game
     { 
         Code = new List<Pin>();
     }
+    public void CreateCode()
+    {
+        Random random = new Random();
+
+        for(int i = 0; i < 4; i++)
+        {
+            random.Next(1, 8);
+        }
+    }
 }
 public class Pin
 {
