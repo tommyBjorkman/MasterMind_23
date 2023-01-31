@@ -21,6 +21,8 @@ namespace MasterMind_23
                 input = Console.ReadLine();
             }
 
+            game.MakeGuess(input);
+
             foreach(Pin pin in game.Code)
             {
                 WritePin(pin.Color);
@@ -81,6 +83,42 @@ public class Game
         {
             Color randomColor = (Color)random.Next(1, 8);
             Code.Add(new Pin(i, randomColor));
+        }
+    }
+    public void MakeGuess(string guess)
+    {
+        List<string> inputs = guess.Split("-").ToList();
+        List<Pin> guessCode = new List<Pin>();
+
+        foreach(string guessColor in inputs)
+        {
+            switch(guessColor)
+            {
+                case "B":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Blue));
+                    break;
+                case "C":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Cyan));
+                    break;
+                case "W":
+                    guessCode.Add(new Pin(guessCode.Count, Color.White));
+                    break;
+                case "Y":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Yellow));
+                    break;
+                case "G":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Green));
+                    break;
+                case "R":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Red));
+                    break;
+                case "M":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Magenta));
+                    break;
+                case "O":
+                    guessCode.Add(new Pin(guessCode.Count, Color.Orange));
+                    break;
+            }
         }
     }
 }
