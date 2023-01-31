@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MasterMind_23
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Game game = new Game();
             game.CreateCode();
             //how many guesses loop
             while (game.Guesses.Count < 12)
             {
-                Console.WriteLine("Make your choice");
+                Console.WriteLine("Make your choices");
                 //which input are allowed
                 string input = Console.ReadLine();
                 while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
@@ -39,21 +39,20 @@ namespace MasterMind_23
                         WriteResult(result.Type);
                     }
                     Console.WriteLine();
-
-                    List<ResultPin> lastResult = game.Results.Values.Last();
-                    if (results.Count(x => x.Type == ResultType.Correct) == 4)
-                    {
-                        Console.WriteLine("Congratulations! You have won!");
-                        break;
-                    }
                 }
                 Console.WriteLine();
 
-                if (game.Guesses.Count >= 12)
+                List<ResultPin> lastResult = game.Results.Values.Last();
+                if (lastResult.Count(x => x.Type == ResultType.Correct) == 4)
                 {
-                    Console.WriteLine("You have lost");
+                    Console.WriteLine("Congratulations! You have won!");
+                    break;
                 }
             }
+            if (game.Guesses.Count >= 12)
+            {
+                Console.WriteLine("You have lost");
+            }            
         }
         //display right colors
         public static void WritePin(Color color)
@@ -94,11 +93,11 @@ namespace MasterMind_23
             {
                 case ResultType.Correct:
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("V");
+                    Console.Write("V ");
                     break;
                 case ResultType.Wrong:
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("X");
+                    Console.Write("X ");
                     break;
                 case ResultType.Malplaced:
                     Console.Write("  ");
