@@ -125,7 +125,7 @@ public class Game
                     guessCode.Add(new Pin(guessCode.Count, Color.Orange));
                     break;
             }
-            Guesses.Add(guess.Count, guessCode);
+            Guesses.Add(Guesses.Count, guessCode);
         }
     }
 }
