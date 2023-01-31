@@ -15,7 +15,7 @@ namespace MasterMind_23
 
             foreach(Pin pin in game.Code)
             {
-                Console.WriteLine("test" + pin.Color);
+                Console.WriteLine(pin.Color);
             }
         }
     }
@@ -28,6 +28,7 @@ public class Game
     { 
         Code = new List<Pin>();
     }
+    // Random color generator. Get the 4 colors to guess on. 
     public void CreateCode()
     {
         Random random = new Random();
@@ -50,6 +51,7 @@ public class Pin
         Color = color;
     }
 }
+// The colors in the game
 public enum Color
 {
     White = 1,
