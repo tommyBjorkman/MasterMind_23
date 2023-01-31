@@ -37,7 +37,10 @@ namespace MasterMind_23
                 }
                 Console.WriteLine();
             }
-            
+            if(game.Guess.Count >= 12)
+            {
+                Console.WriteLine("You have lost");
+            }
         }
        //display right colors
         public static void WritePin(Color color)
@@ -69,7 +72,6 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-            
             Console.OutputEncoding = Encoding.Unicode;
             Console.Write("\x25A0 ");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -85,6 +87,23 @@ public class Game
     { 
         Code = new List<Pin>();
         Guesses = new Dictionary<int, List<Pin>>();
+    }
+
+    public void CheckCode(List<Pin> guessCode)
+    {
+        List<ResultPin>  resultPins = new List<ResultPin>();
+        foreach(var pin in guessCode)
+        {
+            //correct answer condition
+            if (Code.FirstOrDefault(x => x.Color == pin.Color && x.Position == pin.Position) != null)
+            {
+                resultPins.Add(new ResultPin(ResultType.Correct));
+            }
+            else if(Code.Any(x => x.Color == pin.Color))
+            {
+                resultPins.Add(new ResultPin(ResultType.Wrong));
+            }
+        }
     }
     // Random color generator. Get the 4 colors to guess on. 
     public void CreateCode()
@@ -135,6 +154,23 @@ public class Game
         }
         Guesses.Add(Guesses.Count, guessCode);
     }
+}
+
+public class ResultPin
+{
+    public ResultType Type { get; set; }
+
+    public ResultPin(ResultType type)
+    {
+        Type = type;
+    }
+}
+
+public enum ResultType
+{
+    Correct,
+    Wrong,
+    Malplaced
 }
 public class Pin
 {
