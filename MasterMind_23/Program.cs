@@ -15,7 +15,7 @@ namespace MasterMind_23
 
             foreach(Pin pin in game.Code)
             {
-                Console.WriteLine(pin.Color);
+                Console.WriteLine("test" + pin.Color);
             }
         }
     }
