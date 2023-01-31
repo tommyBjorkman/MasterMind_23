@@ -13,9 +13,10 @@ namespace MasterMind_23
         {
             Game game = new Game();
             game.CreateCode();
-
+            //how many guesses loop
             while(game.Guesses.Count < 12)
             {
+                Console.WriteLine("Make your choice");
                 //which input are allowed
                 string input = Console.ReadLine();
                 while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
@@ -98,7 +99,7 @@ public class Game
     }
     public void MakeGuess(string guess)
     {
-        List<string> inputs = guess.Split(".").ToList();
+        List<string> inputs = guess.Split('.').ToList();
         List<Pin> guessCode = new List<Pin>();
 
         foreach(string guessColor in inputs)
