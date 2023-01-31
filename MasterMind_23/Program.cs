@@ -23,28 +23,28 @@ namespace MasterMind_23
         {
             switch(color)
             {
-                case color.Blue:
+                case Color.Blue:
                     Console.ForegroundColor = ConsoleColor.Blue; 
                     break;
-                case color.Red:
+                case Color.Red:
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
-                case color.Yellow:
+                case Color.Yellow:
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
-                case color.Black:
+                case Color.Black:
                     Console.ForegroundColor = ConsoleColor.Black;
                     break;
-                case color.Magenta:
+                case Color.Magenta:
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     break;
-                case color.Orange:
+                case Color.Orange:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     break;
-                case color.White:
+                case Color.White:
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
-                case color.Green:
+                case Color.Green:
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
