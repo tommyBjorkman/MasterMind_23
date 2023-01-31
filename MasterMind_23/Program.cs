@@ -39,6 +39,13 @@ namespace MasterMind_23
                         WriteResult(result.Type);
                     }
                     Console.WriteLine();
+
+                    List<ResultPin> lastResult = game.Results.Values.Last();
+                    if (results.Count(x => x.Type == ResultType.Correct) == 4)
+                    {
+                        Console.WriteLine("Congratulations! You have won!");
+                        break;
+                    }
                 }
                 Console.WriteLine();
 
@@ -143,6 +150,10 @@ namespace MasterMind_23
             for (int i = 0; i < 4; i++)
             {
                 Color randomColor = (Color)random.Next(1, 8);
+                while(Code.Any(x => x.Color == randomColor))
+                {
+                    randomColor = (Color)random.Next(1, 8);
+                }
                 Code.Add(new Pin(i, randomColor));
             }
         }
