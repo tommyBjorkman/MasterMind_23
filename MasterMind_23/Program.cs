@@ -17,7 +17,12 @@ namespace MasterMind_23
 }
 public class Game
 {
+    public List<Pin> Code { get; set; }
 
+    public Game() 
+    { 
+        Code = new List<Pin>();
+    }
 }
 public class Pin
 {
