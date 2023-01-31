@@ -10,18 +10,8 @@ namespace MasterMind_23
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(1 + 1);
-
-
-
-            /*
-            //testing basic
-            string input = Console.ReadLine();
-            Console.WriteLine(input);
-            //testing to change color
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine('\u2B24' + "⬤ Testing the colors");
-            */
+            Pin purple = new Pin(1, Color.Purple);
+            
         }
     }
 }
@@ -33,6 +23,12 @@ public class Pin
 {
     public int Position { get; set; }
     public Color Color { get; set; }
+
+    public Pin(int position, Color color)
+    {
+        Position = position;
+        Color = color;
+    }
 }
 public enum Color
 {
