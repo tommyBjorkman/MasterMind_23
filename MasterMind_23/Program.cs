@@ -13,25 +13,30 @@ namespace MasterMind_23
         {
             Game game = new Game();
             game.CreateCode();
-            //which input are allowed
-            string input = Console.ReadLine();
-            while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
-            {
-                Console.WriteLine("Invalid input");
-                input = Console.ReadLine();
-            }
 
-            game.MakeGuess(input);
-
-            foreach(var guess in game.Guesses)
+            while(game.Guesses.Count < 12)
             {
-                foreach(Pin pin in guess.Value)
+                //which input are allowed
+                string input = Console.ReadLine();
+                while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
                 {
-                    WritePin(pin.Color);
+                    Console.WriteLine("Invalid input");
+                    input = Console.ReadLine();
+                }
+
+                game.MakeGuess(input);
+
+                foreach (var guess in game.Guesses)
+                {
+                    foreach (Pin pin in guess.Value)
+                    {
+                        WritePin(pin.Color);
+                    }
+                    Console.WriteLine();
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+            
         }
        //display right colors
         public static void WritePin(Color color)
@@ -93,7 +98,7 @@ public class Game
     }
     public void MakeGuess(string guess)
     {
-        List<string> inputs = guess.Split("-").ToList();
+        List<string> inputs = guess.Split(".").ToList();
         List<Pin> guessCode = new List<Pin>();
 
         foreach(string guessColor in inputs)
@@ -125,8 +130,9 @@ public class Game
                     guessCode.Add(new Pin(guessCode.Count, Color.Orange));
                     break;
             }
-            Guesses.Add(Guesses.Count, guessCode);
+            
         }
+        Guesses.Add(Guesses.Count, guessCode);
     }
 }
 public class Pin
