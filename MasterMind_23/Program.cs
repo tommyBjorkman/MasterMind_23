@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MasterMind_23
@@ -13,10 +14,18 @@ namespace MasterMind_23
             Game game = new Game();
             game.CreateCode();
 
+            string input = Console.ReadLine();
+            while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
+            {
+                Console.WriteLine("Invalid input");
+                input = Console.ReadLine();
+            }
+
             foreach(Pin pin in game.Code)
             {
                 WritePin(pin.Color);
             }
+            Console.WriteLine();
         }
        //display right colors
         public static void WritePin(Color color)
