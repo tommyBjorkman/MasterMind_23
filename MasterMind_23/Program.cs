@@ -11,7 +11,7 @@ namespace MasterMind_23
         static void Main(string[] args)
         {
             Pin purple = new Pin(1, Color.Purple);
-            
+            Console.WriteLine(purple.Color);
         }
     }
 }
