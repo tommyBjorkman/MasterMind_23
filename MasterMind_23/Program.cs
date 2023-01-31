@@ -31,17 +31,8 @@ public class Game
 }
 public class Pin
 {
-    int position;
-
-    public void SetPosition() 
-    { 
-    
-    }
-    public int GetPosition()
-    {
-
-    }
     public int Position { get; set; }
+    public Color Color { get; set; }
 }
 public enum Color
 {
