@@ -25,3 +25,22 @@ namespace MasterMind_23
         }
     }
 }
+public class Game
+{
+
+}
+public class Pin
+{
+    public int Position { get; set; }
+}
+public enum Color
+{
+    White,
+    Black,
+    Blue,
+    Yellow,
+    Green,
+    Red,
+    Purple,
+    Orange
+}
