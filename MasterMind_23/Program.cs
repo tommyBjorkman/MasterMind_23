@@ -46,12 +46,12 @@ public class Pin
 }
 public enum Color
 {
-    White,
-    Black,
-    Blue,
-    Yellow,
-    Green,
-    Red,
-    Purple,
-    Orange
+    White = 1,
+    Grey = 2,
+    Blue = 3,
+    Yellow = 4,
+    Green = 5,
+    Red = 6,
+    Purple = 7,
+    Orange = 8
 }
