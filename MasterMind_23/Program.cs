@@ -12,6 +12,11 @@ namespace MasterMind_23
         {
             Game game = new Game();
             game.CreateCode();
+
+            foreach(Pin pin in game.Code)
+            {
+                Console.WriteLine(pin.Color);
+            }
         }
     }
 }
