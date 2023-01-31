@@ -33,6 +33,11 @@ namespace MasterMind_23
                     {
                         WritePin(pin.Color);
                     }
+                    List<ResultPin> results = game.Results[guess.Key];
+                    foreach(ResultPin result in results)
+                    {
+                        WriteResult(result.Type);
+                    }
                     Console.WriteLine();
                 }
                 Console.WriteLine();
@@ -73,8 +78,25 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-
             Console.Write("\x25A0 ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        public static void WriteResult(ResultType type)
+        {
+            switch (type)
+            {
+                case ResultType.Correct:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("V");
+                    break;
+                case ResultType.Wrong:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("X");
+                    break;
+                case ResultType.Malplaced:
+                    Console.Write("  ");
+                    break;
+            }
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
@@ -83,11 +105,13 @@ namespace MasterMind_23
     {
         public List<Pin> Code { get; set; }
         public Dictionary<int, List<Pin>> Guesses { get; set; }
+        public Dictionary<int, List<ResultPin>> Results { get; set; }
 
         public Game()
         {
             Code = new List<Pin>();
             Guesses = new Dictionary<int, List<Pin>>();
+            Results = new Dictionary<int, List<ResultPin>>();
         }
 
         public void CheckCode(List<Pin> guessCode)
@@ -109,6 +133,7 @@ namespace MasterMind_23
                     resultPins.Add(new ResultPin(ResultType.Malplaced));
                 }
             }
+            Results.Add(Results.Count, resultPins);
         }
         // Random color generator. Get the 4 colors to guess on. 
         public void CreateCode()
