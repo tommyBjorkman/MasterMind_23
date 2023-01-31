@@ -15,8 +15,41 @@ namespace MasterMind_23
 
             foreach(Pin pin in game.Code)
             {
-                Console.WriteLine(pin.Color);
+                WritePin(pin.Color);
             }
+        }
+       //display right colors
+        public static void WritePin(Color color)
+        {
+            switch(color)
+            {
+                case color.Blue:
+                    Console.ForegroundColor = ConsoleColor.Blue; 
+                    break;
+                case color.Red:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case color.Yellow:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case color.Black:
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+                case color.Magenta:
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    break;
+                case color.Orange:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case color.White:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case color.Green:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+            }
+            Console.Write("⬤ ");
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
@@ -55,11 +88,11 @@ public class Pin
 public enum Color
 {
     White = 1,
-    Grey = 2,
+    Black = 2,
     Blue = 3,
     Yellow = 4,
     Green = 5,
     Red = 6,
-    Purple = 7,
+    Magenta = 7,
     Orange = 8
 }
