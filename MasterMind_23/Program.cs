@@ -11,7 +11,9 @@ namespace MasterMind_23
     {
         public static void Main(string[] args)
         {
+            //Introduction
             Console.Title = "Master Mind 2023";
+            Console.WindowWidth = 110;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("Welcome to Master Mind! ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -31,10 +33,13 @@ namespace MasterMind_23
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Beat the computer!");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. Use the first letter in each color and separate them with a -. Example W-C-B-Y");
+            Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Use the first letter in each color and separate them with a -. Example W-C-B-Y");
             Console.ForegroundColor = ConsoleColor.Gray;
             Game game = new Game();
             game.CreateCode();
+
             //how many guesses loop
             while (game.Guesses.Count < 12)
             {
@@ -46,9 +51,7 @@ namespace MasterMind_23
                     Console.WriteLine("Invalid input");
                     input = Console.ReadLine();
                 }
-
                 game.MakeGuess(input);
-
                 foreach (var guess in game.Guesses)
                 {
                     foreach (Pin pin in guess.Value)
@@ -56,7 +59,7 @@ namespace MasterMind_23
                         WritePin(pin.Color);
                     }
                     List<ResultPin> results = game.Results[guess.Key];
-                    foreach(ResultPin result in results)
+                    foreach (ResultPin result in results)
                     {
                         WriteResult(result.Type);
                     }
@@ -139,13 +142,12 @@ namespace MasterMind_23
             Guesses = new Dictionary<int, List<Pin>>();
             Results = new Dictionary<int, List<ResultPin>>();
         }
-        //add correct pin to each answer
-        public void CheckCode(List<Pin> guessCode)
+        public void CheckCode(List<Pin> guessCode) //correct answer condition, how to return different types
         {
             List<ResultPin> resultPins = new List<ResultPin>();
             foreach (var pin in guessCode)
             {
-                //correct answer condition
+                
                 if (Code.FirstOrDefault(x => x.Color == pin.Color && x.Position == pin.Position) != null)
                 {
                     resultPins.Add(new ResultPin(ResultType.Correct));
@@ -161,8 +163,7 @@ namespace MasterMind_23
             }
             Results.Add(Results.Count, resultPins);
         }
-        // Random color generator. Get the 4 colors to guess on. 
-        public void CreateCode()
+        public void CreateCode() // Random color generator. Get the 4 colors to guess on. 
         {
             Random random = new Random();
 
@@ -178,7 +179,7 @@ namespace MasterMind_23
         }
         public void MakeGuess(string guess)
         {
-            List<string> inputs = guess.Split('.').ToList();
+            List<string> inputs = guess.Split('-').ToList();
             List<Pin> guessCode = new List<Pin>();
 
             foreach (string guessColor in inputs)
@@ -223,14 +224,14 @@ namespace MasterMind_23
             Type = type;
         }
     }
-
+    
     public enum ResultType
     {
         Correct,
         Wrong,
         Malplaced
-    }
-    public class Pin
+    }//The 3 different types of answers
+    public class Pin //pins position and color
     {
         public int Position { get; set; }
         public Color Color { get; set; }
@@ -241,8 +242,7 @@ namespace MasterMind_23
             Color = color;
         }
     }
-    // The colors in the game
-    public enum Color
+    public enum Color // The colors in the game
     {
         White = 1,
         Cyan = 2,
