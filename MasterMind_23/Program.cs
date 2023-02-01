@@ -19,7 +19,7 @@ namespace MasterMind_23
                 Console.WriteLine("Make your choices");
                 //which input are allowed
                 string input = Console.ReadLine();
-                while (!Regex.IsMatch(input, "^[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]-[WCBYGRMO]$"))
+                while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$"))
                 {
                     Console.WriteLine("Invalid input");
                     input = Console.ReadLine();
@@ -41,7 +41,7 @@ namespace MasterMind_23
                     Console.WriteLine();
                 }
                 Console.WriteLine();
-
+                //Win condition
                 List<ResultPin> lastResult = game.Results.Values.Last();
                 if (lastResult.Count(x => x.Type == ResultType.Correct) == 4)
                 {
@@ -49,6 +49,7 @@ namespace MasterMind_23
                     break;
                 }
             }
+            //Lose condition
             if (game.Guesses.Count >= 12)
             {
                 Console.WriteLine("You have lost");
@@ -57,7 +58,7 @@ namespace MasterMind_23
         //display right colors
         public static void WritePin(Color color)
         {
-            switch (color)
+            switch(color)
             {
                 case Color.Blue:
                     Console.ForegroundColor = ConsoleColor.Blue;
@@ -74,9 +75,6 @@ namespace MasterMind_23
                 case Color.Magenta:
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     break;
-                case Color.Orange:
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    break;
                 case Color.White:
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
@@ -84,8 +82,7 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-            Console.OutputEncoding = System.Text.Encoding.Default;
-            Console.Write("\x25A0 ");
+            Console.Write("X ");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
         public static void WriteResult(ResultType type)
@@ -120,7 +117,7 @@ namespace MasterMind_23
             Guesses = new Dictionary<int, List<Pin>>();
             Results = new Dictionary<int, List<ResultPin>>();
         }
-
+        //add correct pin to each answer
         public void CheckCode(List<Pin> guessCode)
         {
             List<ResultPin> resultPins = new List<ResultPin>();
@@ -149,10 +146,10 @@ namespace MasterMind_23
 
             for (int i = 0; i < 4; i++)
             {
-                Color randomColor = (Color)random.Next(1, 8);
+                Color randomColor = (Color)random.Next(1, 7);
                 while(Code.Any(x => x.Color == randomColor))
                 {
-                    randomColor = (Color)random.Next(1, 8);
+                    randomColor = (Color)random.Next(1, 7);
                 }
                 Code.Add(new Pin(i, randomColor));
             }
@@ -186,9 +183,6 @@ namespace MasterMind_23
                         break;
                     case "M":
                         guessCode.Add(new Pin(guessCode.Count, Color.Magenta));
-                        break;
-                    case "O":
-                        guessCode.Add(new Pin(guessCode.Count, Color.Orange));
                         break;
                 }
 
@@ -235,6 +229,5 @@ namespace MasterMind_23
         Green = 5,
         Red = 6,
         Magenta = 7,
-        Orange = 8
     }
 }
