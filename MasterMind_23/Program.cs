@@ -84,6 +84,7 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
+            Console.OutputEncoding = System.Text.Encoding.Default;
             Console.Write("\x25A0 ");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
