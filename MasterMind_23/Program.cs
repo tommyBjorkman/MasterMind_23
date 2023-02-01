@@ -73,7 +73,7 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Congratulations! You have won!");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
+                    Console.WriteLine("You can now close this window or play the Game again!");
                 }
             }
             //Lose condition
