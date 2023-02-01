@@ -11,12 +11,34 @@ namespace MasterMind_23
     {
         public static void Main(string[] args)
         {
+            Console.Title = "Master Mind 2023";
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("Welcome to Master Mind! ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Beat the computer!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. Use the first letter in each color and separate them with a -. Example W-C-B-Y");
+            Console.ForegroundColor = ConsoleColor.Gray;
             Game game = new Game();
             game.CreateCode();
             //how many guesses loop
             while (game.Guesses.Count < 12)
             {
-                Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. Use the first letter in each color and separate them with a -. Example like this W-C-B-Y");
+                Console.WriteLine("Make your guess ->");
                 //which input are allowed
                 string input = Console.ReadLine();
                 while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$"))
