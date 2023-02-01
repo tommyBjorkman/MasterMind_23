@@ -70,7 +70,9 @@ namespace MasterMind_23
                 List<ResultPin> lastResult = game.Results.Values.Last();
                 if (lastResult.Count(x => x.Type == ResultType.Correct) == 4)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Congratulations! You have won!");
+                    Console.ForegroundColor = ConsoleColor.Gray;
                     break;
                 }
             }
