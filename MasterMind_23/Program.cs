@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Game;
 
 namespace MasterMind_23
 {
@@ -17,7 +16,7 @@ namespace MasterMind_23
             //how many guesses loop
             while (game.Guesses.Count < 12)
             {
-                Console.WriteLine("Make your choices");
+                Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. Use the first letter in each color and separate them with a -. Example like this W-C-B-Y");
                 //which input are allowed
                 string input = Console.ReadLine();
                 while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$"))
