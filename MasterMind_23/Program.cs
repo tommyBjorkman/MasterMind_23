@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Game;
 
 namespace MasterMind_23
 {
@@ -82,7 +83,7 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-            Console.Write("X ");
+            Console.Write("\x25A0 ");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
         public static void WriteResult(ResultType type)
