@@ -35,30 +35,29 @@ namespace MasterMind_23
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Use the first letter in each color and separate them with a -. Example W-C-B-Y");
+            Console.WriteLine("Use the first letter in each color and separate them with a -. Example W-C-B-Y. You have 10 tries!");
             Console.ForegroundColor = ConsoleColor.Gray;
             Game game = new Game();
             game.CreateCode();
 
             //how many guesses loop
-            while (game.Guesses.Count < 12)
+            while (game.Guesses.Count < 10)
             {
                 Console.WriteLine("Make your guess ->");
-                //which input are allowed
                 string input = Console.ReadLine();
-                while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$"))
+                while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$")) //make sure the input matches what is allowed
                 {
-                    Console.WriteLine("Invalid input");
+                    Console.WriteLine("Invalid input"); //What to write if input is wrong
                     input = Console.ReadLine();
                 }
-                game.MakeGuess(input);
+                game.MakeGuess(input); //How to handle each guess
                 foreach (var guess in game.Guesses)
                 {
                     foreach (Pin pin in guess.Value)
                     {
                         WritePin(pin.Color);
                     }
-                    List<ResultPin> results = game.Results[guess.Key];
+                    List<ResultPin> results = game.Results[guess.Key]; //Write out the result of the guess
                     foreach (ResultPin result in results)
                     {
                         WriteResult(result.Type);
@@ -66,24 +65,21 @@ namespace MasterMind_23
                     Console.WriteLine();
                 }
                 Console.WriteLine();
-                //Win condition
                 List<ResultPin> lastResult = game.Results.Values.Last();
-                if (lastResult.Count(x => x.Type == ResultType.Correct) == 4)
+                if (lastResult.Count(x => x.Type == ResultType.Correct) == 4)  //Win condition, 4 correct colors in the correct place ends the game
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Congratulations! You have won!");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine("You can now close this window or play the Game again!");
+                    Console.WriteLine("You can now close this window or play the Game again!"); //No break since I do not know how to pause after win.
                 }
             }
-            //Lose condition
-            if (game.Guesses.Count >= 12)
+            if (game.Guesses.Count >= 10) //Lose condition, if 10 guesses and none is fully correct you lose
             {
                 Console.WriteLine("You have lost");
             }            
         }
-        //display right colors
-        public static void WritePin(Color color)
+        public static void WritePin(Color color) //display right colors. using switch to use different colors depending on guess
         {
             switch(color)
             {
@@ -109,10 +105,10 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
             }
-            Console.Write("\x25A0 ");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("\x25A0 "); //Symbol to display guesses
+            Console.ForegroundColor = ConsoleColor.Gray; //reset color of console text back to default gray after each guess
         }
-        public static void WriteResult(ResultType type)
+        public static void WriteResult(ResultType type) //How to display the different result types to the side of the guesses
         {
             switch (type)
             {
@@ -128,11 +124,11 @@ namespace MasterMind_23
                     Console.Write("  ");
                     break;
             }
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Gray; //resets text color to default gray
         }
     }
 
-    public class Game
+    public class Game //create class Game
     {
         public List<Pin> Code { get; set; }
         public Dictionary<int, List<Pin>> Guesses { get; set; }
