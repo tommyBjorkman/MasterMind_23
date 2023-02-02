@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MasterMind_23
 {
@@ -34,7 +32,7 @@ namespace MasterMind_23
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("■ ");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Beat the computer!");
+            Console.WriteLine("Now win the game!");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red, Silver or Magenta. ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
