@@ -46,7 +46,7 @@ namespace MasterMind_23
             {
                 Console.WriteLine("Make your guess ->");
                 string input = Console.ReadLine();
-                while (!Regex.IsMatch(input, "^[WCBYGRM]-[WCBYGRM]-[WCBYGRM]-[WCBYGRM]$")) //make sure the input matches what is allowed
+                while (!Regex.IsMatch(input, "^[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]$")) //make sure the input matches what is allowed
                 {
                     Console.WriteLine("Invalid input"); //What to write if input is wrong
                     input = Console.ReadLine();
@@ -208,6 +208,27 @@ namespace MasterMind_23
                         guessCode.Add(new Pin(guessCode.Count, Color.Red));
                         break;
                     case "M":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Magenta));
+                        break;
+                    case "b":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Blue));
+                        break;
+                    case "c":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Cyan));
+                        break;
+                    case "w":
+                        guessCode.Add(new Pin(guessCode.Count, Color.White));
+                        break;
+                    case "y":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Yellow));
+                        break;
+                    case "g":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Green));
+                        break;
+                    case "r":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Red));
+                        break;
+                    case "m":
                         guessCode.Add(new Pin(guessCode.Count, Color.Magenta));
                         break;
                 }
