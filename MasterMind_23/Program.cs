@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -71,12 +72,16 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Congratulations! You have won!");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine("You can now close this window or play the Game again!"); //No break since I do not know how to pause after win.
+                    Console.WriteLine("Do you want to play again?");
+                    Console.ReadLine();
+                    break;
                 }
             }
             if (game.Guesses.Count >= 10) //Lose condition, if 10 guesses and none is fully correct you lose
             {
                 Console.WriteLine("You have lost");
+                Console.WriteLine("Do you want to play again?");
+                Console.ReadLine();
             }            
         }
         public static void WritePin(Color color) //display right colors. using switch to use different colors depending on guess
@@ -130,15 +135,15 @@ namespace MasterMind_23
 
     public class Game //create class Game
     {
-        public List<Pin> Code { get; set; }
+        public List<Pin> Code { get; set; } 
         public Dictionary<int, List<Pin>> Guesses { get; set; }
         public Dictionary<int, List<ResultPin>> Results { get; set; }
 
         public Game()
         {
-            Code = new List<Pin>();
-            Guesses = new Dictionary<int, List<Pin>>();
-            Results = new Dictionary<int, List<ResultPin>>();
+            Code = new List<Pin>(); //make list of pin class
+            Guesses = new Dictionary<int, List<Pin>>(); //make dictionary for the guesses
+            Results = new Dictionary<int, List<ResultPin>>(); //make a dictionary for the results
         }
         public void CheckCode(List<Pin> guessCode) //correct answer condition, how to return different types
         {
