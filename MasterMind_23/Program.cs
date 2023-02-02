@@ -31,10 +31,12 @@ namespace MasterMind_23
             Console.Write("■ ");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("■ ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("■ ");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Beat the computer!");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red or Magenta. ");
+            Console.WriteLine("Choose between White, Cyan, Blue, Yellow, Green, Red, Silver or Magenta. ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Use the first letter in each color and separate them with a -. Example W-C-B-Y. You have 10 tries!");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -46,7 +48,7 @@ namespace MasterMind_23
             {
                 Console.WriteLine("Make your guess ->");
                 string input = Console.ReadLine();
-                while (!Regex.IsMatch(input, "^[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]-[WCBYGRMwcbygrm]$")) //make sure the input matches what is allowed
+                while (!Regex.IsMatch(input, "^[WCBYGRMwcbygrmsS]-[WCBYGRMwcbygrmsS]-[WCBYGRMwcbygrmsS]-[WCBYGRMwcbygrmsS]$")) //make sure the input matches what is allowed
                 {
                     Console.WriteLine("Invalid input"); //What to write if input is wrong
                     input = Console.ReadLine();
@@ -108,6 +110,9 @@ namespace MasterMind_23
                     break;
                 case Color.Green:
                     Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case Color.Silver:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
                     break;
             }
             Console.Write("\x25A0 "); //Symbol to display guesses
@@ -172,10 +177,10 @@ namespace MasterMind_23
 
             for (int i = 0; i < 4; i++)
             {
-                Color randomColor = (Color)random.Next(1, 7);
+                Color randomColor = (Color)random.Next(1, 8);
                 while(Code.Any(x => x.Color == randomColor))
                 {
-                    randomColor = (Color)random.Next(1, 7);
+                    randomColor = (Color)random.Next(1, 8);
                 }
                 Code.Add(new Pin(i, randomColor));
             }
@@ -231,6 +236,12 @@ namespace MasterMind_23
                     case "m":
                         guessCode.Add(new Pin(guessCode.Count, Color.Magenta));
                         break;
+                    case "s":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Silver));
+                        break;
+                    case "S":
+                        guessCode.Add(new Pin(guessCode.Count, Color.Silver));
+                        break;
                 }
 
             }
@@ -275,5 +286,6 @@ namespace MasterMind_23
         Green = 5,
         Red = 6,
         Magenta = 7,
+        Silver = 8
     }
 }
