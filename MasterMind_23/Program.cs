@@ -74,22 +74,15 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Congratulations! You have won!");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine("Do you want to play again? Y/N");
-                    var yesorno = Console.ReadKey();
-                    if (yesorno.Key == ConsoleKey.N)
-                    {
-                        break;
-                    }
-                    else 
-                    {
-                        Console.WriteLine("Here we go!"); 
-                    }
+                    Console.WriteLine("Press any key to exit...");
+                    Console.ReadLine();
+                    break;
                 }
             }
             if (game.Guesses.Count >= 10) //Lose condition, if 10 guesses and none is fully correct you lose
             {
-                Console.WriteLine("You have lost");
-                Console.WriteLine("Do you want to play again?");
+                Console.WriteLine("You have lost. Better luck next time.");
+                Console.WriteLine("Press any key to exit...");
                 Console.ReadLine();
             }            
         }
