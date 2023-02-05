@@ -144,7 +144,7 @@ namespace MasterMind_23
 
         public Game()
         {
-            Code = new List<Pin>(); //make list of pin class
+            Code = new List<Pin>(); //make list of the code
             Guesses = new Dictionary<int, List<Pin>>(); //make dictionary for the guesses
             Results = new Dictionary<int, List<ResultPin>>(); //make a dictionary for the results
         }
@@ -169,7 +169,7 @@ namespace MasterMind_23
             }
             Results.Add(Results.Count, resultPins);
         }
-        public void CreateCode() // Random color generator. Get the 4 colors to guess on. 
+        public void CreateCode() // Random color generator. Get the 4 colors to guess on. creating the code. 
         {
             Random random = new Random();
 
