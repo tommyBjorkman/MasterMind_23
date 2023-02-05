@@ -124,11 +124,11 @@ namespace MasterMind_23
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("V ");
                     break;
-                case ResultType.Wrong:
+                case ResultType.Malplaced:
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("X ");
                     break;
-                case ResultType.Malplaced:
+                case ResultType.Wrong:
                     Console.Write("  ");
                     break;
             }
@@ -160,11 +160,11 @@ namespace MasterMind_23
                 }
                 else if (Code.Any(x => x.Color == pin.Color))
                 {
-                    resultPins.Add(new ResultPin(ResultType.Wrong));
+                    resultPins.Add(new ResultPin(ResultType.Malplaced));
                 }
                 else
                 {
-                    resultPins.Add(new ResultPin(ResultType.Malplaced));
+                    resultPins.Add(new ResultPin(ResultType.Wrong));
                 }
             }
             Results.Add(Results.Count, resultPins);
